@@ -11,7 +11,7 @@ services:
       - zoo3
 
   zoo1:
-    image: confluentinc/cp-zookeeper:7.3.2
+    image: confluentinc/cp-zookeeper:latest
     hostname: zoo1
     container_name: ${COMPOSE_PROJECT_NAME}_zoo1
     ports:
@@ -22,26 +22,26 @@ services:
       ZOOKEEPER_SERVERS: zoo1:2888:3888;zoo2:2888:3888;zoo3:2888:3888
 
   zoo2:
-    image: confluentinc/cp-zookeeper:7.3.2
+    image: confluentinc/cp-zookeeper:latest
     hostname: zoo2
     container_name: ${COMPOSE_PROJECT_NAME}_zoo2
     ports:
-      - "2182:2182"
+      - "2182:2181"
     environment:
-      ZOOKEEPER_CLIENT_PORT: 2182
+      ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVER_ID: 2
       ZOOKEEPER_SERVERS: zoo1:2888:3888;zoo2:2888:3888;zoo3:2888:3888
     depends_on:
       - zoo1
 
   zoo3:
-    image: confluentinc/cp-zookeeper:7.3.2
+    image: confluentinc/cp-zookeeper:latest
     hostname: zoo3
     container_name: ${COMPOSE_PROJECT_NAME}_zoo3
     ports:
-      - "2183:2183"
+      - "2183:2181"
     environment:
-      ZOOKEEPER_CLIENT_PORT: 2183
+      ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVER_ID: 3
       ZOOKEEPER_SERVERS: zoo1:2888:3888;zoo2:2888:3888;zoo3:2888:3888
     depends_on:
