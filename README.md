@@ -1,19 +1,16 @@
-### docker-compose template ###
+### docker-kafka_zk ###
 
 # Services
 
 | Service   | Note |
 | :---      | :--- |
-| http://localhost:6081/stats | haproxy stats page ( stats:Password123 ) |
-| https://localhost:6091 | proxysql01 web interface ( stats:admin ) |
-| https://localhost:6092 | proxysql02 web interface ( stats:admin ) |
-| http://localhost:8081 | adminer web interface |
+| http://localhost:8080 | zookeeper-UI |
+| http://localhost:8081 | kafka-UI |
 | | |
-| tcp://localhost:3306 | haproxy -> proxysql cluster |
+| tcp://localhost:2181 | zookeeper node01 |
+| tcp://localhost:2182 | zookeeper node02 |
+| tcp://localhost:2183 | zookeeper node03 |
 | | |
-| tcp://localhost:6032 | proxysql01 admin interface |
-| tcp://localhost:6033 | proxysql02 admin interface |
-| | |
-| tcp://localhost:3307 | db01 mysql |
-| tcp://localhost:3308 | db02 mysql |
-| tcp://localhost:3309 | db03 mysql |
+| tcp://localhost:9092 | kafka node01 |
+| tcp://localhost:9093 | kafka node02 |
+| tcp://localhost:9094 | kafka node03 |
